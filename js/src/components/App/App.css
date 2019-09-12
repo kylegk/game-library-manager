@@ -1,0 +1,30 @@
+.heading {
+  margin-bottom: 25px;
+}
+
+.page-wrapper {
+  width: 1366px;
+  margin-left: 25px;
+}
+
+.layout {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  width: 10%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+  width: 600px;
+  margin-left: 50px;
+}
