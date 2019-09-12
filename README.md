@@ -29,4 +29,4 @@ Once the required Go libraries have been installed, you will want to setup your 
 After configuring the `.env` file, you can start the API by executing the apporpiate `go run main.go` or `go build` commands.
 
 ### React front-end
-This part of the project is the most straight forward to get running. Simply switch to the `js/` directory and execute `yarn get` or `npm get` to install the required packages. Once the packages are installed, start the project using `yarn start` or `npm start`.
+This part of the project is the most straight forward to get running. Simply switch to the `js/` directory and execute `yarn` or `npm install` to install the required packages. Once the packages are installed, start the project using `yarn start` or `npm start`.
