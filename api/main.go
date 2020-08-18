@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/kylegk/inventory/api/router"
+	"github.com/kylegk/collection/api/router"
 )
 
 func main() {

@@ -7,8 +7,8 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/kylegk/inventory/api/db"
-	"github.com/kylegk/inventory/api/model"
+	"github.com/kylegk/collection/api/db"
+	"github.com/kylegk/collection/api/model"
 )
 
 // ListCountries - Get a list of countries in the database

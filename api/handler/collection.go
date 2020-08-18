@@ -9,8 +9,8 @@ import (
 	"strconv"
 
 	"github.com/gorilla/mux"
-	"github.com/kylegk/inventory/api/db"
-	"github.com/kylegk/inventory/api/model"
+	"github.com/kylegk/collection/api/db"
+	"github.com/kylegk/collection/api/model"
 )
 
 // GetCollection - Get all of the items in the collection

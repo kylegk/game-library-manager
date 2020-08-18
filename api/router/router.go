@@ -10,7 +10,7 @@ import (
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
-	"github.com/kylegk/inventory/api/handler"
+	"github.com/kylegk/collection/api/handler"
 )
 
 // AddRoutes - add the routes to be served
