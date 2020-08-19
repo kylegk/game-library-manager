@@ -199,7 +199,7 @@ class GameForm extends React.Component {
               value={getCountry(countryOptions, country)}
               onChange={this.handleCountrySelect}
               options={countryOptions}
-              isSearchable={false}
+              isSearchable={true}
               autosize={false}
               styles={selectStyles}
             />

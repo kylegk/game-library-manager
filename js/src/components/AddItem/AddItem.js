@@ -11,7 +11,7 @@ class AddItem extends Component {
   }
 
   // POST - add an item to the collection
-  subitForm(formData) {
+  submitForm(formData) {
     fetch(`http://localhost:8000/api/collection`, {
       method: 'POST',
 			body: JSON.stringify(formData),
@@ -31,7 +31,7 @@ class AddItem extends Component {
   render() {
     return(
       <div>
-        <GameForm handleSubmit={this.subitForm.bind(this)}  redirect={this.state.redirect} />
+        <GameForm id={Math.random()} handleSubmit={this.submitForm.bind(this)} redirect={this.state.redirect} />
       </div>
     )
   }
