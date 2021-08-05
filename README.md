@@ -1,5 +1,5 @@
 # Game Library Manager
-This project is a very simple API and web application for managing a video game library. The library offers simple CRUD operations for adding, editing, and removing games from the library. 
+This project is a very simple API and React web application for managing a video game library. The library offers simple CRUD operations for adding, editing, and removing games from the library. 
 
 There are three main components to this application: an API written in Golang, a front-end written in React, and a data model created for PostgreSQL.
 
