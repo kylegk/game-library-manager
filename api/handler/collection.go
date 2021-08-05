@@ -9,11 +9,11 @@ import (
 	"strconv"
 
 	"github.com/gorilla/mux"
-	"github.com/kylegk/collection/api/db"
-	"github.com/kylegk/collection/api/model"
+	"github.com/kylegk/game-library-manager/api/db"
+	"github.com/kylegk/game-library-manager/api/model"
 )
 
-// GetCollection - Get all of the items in the collection
+// GetCollection gets all the items in the collection
 func GetCollection(w http.ResponseWriter, r *http.Request) {
 
 	database := db.GetDBHandle()
@@ -30,7 +30,7 @@ func GetCollection(w http.ResponseWriter, r *http.Request) {
 	sendResponse(w, http.StatusOK, collection)
 }
 
-// AddItem - Add an item to the collection
+// AddItem adds an item to the collection
 func AddItem(w http.ResponseWriter, r *http.Request) {
 
 	item := &model.Item{}
@@ -39,7 +39,7 @@ func AddItem(w http.ResponseWriter, r *http.Request) {
 	if err == nil {
 		err = validateItem(item)
 	} else {
-		err = errors.New("Invalid data")
+		err = errors.New("invalid data")
 	}
 
 	if err != nil {
@@ -51,7 +51,7 @@ func AddItem(w http.ResponseWriter, r *http.Request) {
 	err = database.Table("collection").Create(item).Error
 
 	if err != nil {
-		err = errors.New("Unable to add record")
+		err = errors.New("unable to add record")
 		sendErrorResponse(w, http.StatusBadRequest, err.Error())
 		return
 	}
@@ -59,9 +59,8 @@ func AddItem(w http.ResponseWriter, r *http.Request) {
 	sendResponse(w, http.StatusOK, map[string]int{"id": item.ID})
 }
 
-// GetItem - Get an item from the collection
+// GetItem gets an item from the collection
 func GetItem(w http.ResponseWriter, r *http.Request) {
-
 	vars := mux.Vars(r)
 	id := vars["id"]
 	item, err := retrieveItem(id)
@@ -74,9 +73,8 @@ func GetItem(w http.ResponseWriter, r *http.Request) {
 	sendResponse(w, http.StatusOK, item)
 }
 
-// UpdateItem - Update an item in the collection
+// UpdateItem updates an item in the collection
 func UpdateItem(w http.ResponseWriter, r *http.Request) {
-
 	vars := mux.Vars(r)
 	id := vars["id"]
 	item := &model.Item{}
@@ -88,7 +86,7 @@ func UpdateItem(w http.ResponseWriter, r *http.Request) {
 		// Check if the item exists before attempting to update the record
 		_, err = retrieveItem(id)
 	} else {
-		err = errors.New("Invalid data")
+		err = errors.New("invalid data")
 	}
 
 	// Verify the country code is valid
@@ -106,7 +104,7 @@ func UpdateItem(w http.ResponseWriter, r *http.Request) {
 	err = database.Table("collection").Where("id = ?", id).Update(item).Error
 
 	if err != nil {
-		err = errors.New("Unable to update record")
+		err = errors.New("unable to update record")
 		sendErrorResponse(w, http.StatusNotFound, err.Error())
 		return
 	}
@@ -114,7 +112,7 @@ func UpdateItem(w http.ResponseWriter, r *http.Request) {
 	sendResponse(w, http.StatusOK, item)
 }
 
-// DeleteItem - Remove an item from the collection
+// DeleteItem removes an item from the collection
 func DeleteItem(w http.ResponseWriter, r *http.Request) {
 
 	vars := mux.Vars(r)
@@ -133,7 +131,7 @@ func DeleteItem(w http.ResponseWriter, r *http.Request) {
 	err = database.Table("collection").Where("id=?", id).Delete(item).Error
 
 	if err != nil {
-		err = errors.New("Unable to delete record")
+		err = errors.New("unable to delete record")
 		sendErrorResponse(w, http.StatusBadRequest, err.Error())
 		return
 	}
@@ -146,15 +144,15 @@ func DeleteItem(w http.ResponseWriter, r *http.Request) {
 func validateItem(item *model.Item) error {
 
 	if item.Name == "" {
-		return errors.New("Missing Name")
+		return errors.New("missing name")
 	}
 
 	if item.Year == 0 {
-		return errors.New("Missing Year")
+		return errors.New("missing year")
 	}
 
 	if item.Country == 0 {
-		return errors.New("Missing Country")
+		return errors.New("missing country")
 	}
 
 	if item.Country != 0 {
@@ -169,7 +167,6 @@ func validateItem(item *model.Item) error {
 
 // Helper method to retrieve a single item from the database
 func retrieveItem(id string) (*model.Item, error) {
-
 	database := db.GetDBHandle()
 	item := &model.Item{}
 

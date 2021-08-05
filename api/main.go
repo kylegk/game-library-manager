@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/kylegk/collection/api/router"
+	"github.com/kylegk/game-library-manager/api/router"
 )
 
 func main() {

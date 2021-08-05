@@ -10,10 +10,10 @@ import (
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
-	"github.com/kylegk/collection/api/handler"
+	"github.com/kylegk/game-library-manager/api/handler"
 )
 
-// AddRoutes - add the routes to be served
+// AddRoutes adds the routes to be served
 func AddRoutes() {
 	router := mux.NewRouter().StrictSlash(true)
 
@@ -36,7 +36,7 @@ func AddRoutes() {
 	log.Fatal(http.ListenAndServe(":8000", logRequest(handlers.CORS(originsOk, headersOk, methodsOk)(router))))
 }
 
-// Log all of the HTTP requests
+// Log all the HTTP requests
 func logRequest(handler http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		log.Printf("%s %s %s\n", r.RemoteAddr, r.Method, r.URL)

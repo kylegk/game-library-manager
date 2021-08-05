@@ -7,11 +7,11 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/kylegk/collection/api/db"
-	"github.com/kylegk/collection/api/model"
+	"github.com/kylegk/game-library-manager/api/db"
+	"github.com/kylegk/game-library-manager/api/model"
 )
 
-// ListCountries - Get a list of countries in the database
+// ListCountries gets a list of countries from the database
 func ListCountries(w http.ResponseWriter, r *http.Request) {
 	database := db.GetDBHandle()
 	countries := make([]*model.Country, 0)
@@ -26,7 +26,7 @@ func ListCountries(w http.ResponseWriter, r *http.Request) {
 	sendResponse(w, http.StatusOK, list)
 }
 
-// ValidateCountry - Check if a country exists
+// ValidateCountry checks if a country exists
 func ValidateCountry(id int) error {
 	database := db.GetDBHandle()
 	country := &model.Country{}
@@ -34,7 +34,7 @@ func ValidateCountry(id int) error {
 	err := database.Table("country").Where("id = ?", id).First(country).Error
 
 	if err != nil {
-		return errors.New("Invalid Country")
+		return errors.New("invalid country")
 	}
 
 	return nil

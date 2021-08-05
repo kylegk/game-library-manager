@@ -20,7 +20,7 @@ func sendResponse(w http.ResponseWriter, status int, payload interface{}) {
 	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
 	w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
 	w.WriteHeader(status)
-	w.Write([]byte(res))
+	w.Write(res)
 }
 
 // Return a JSON encoded error
